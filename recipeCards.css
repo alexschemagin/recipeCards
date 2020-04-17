@@ -1,0 +1,99 @@
+/*
+recipeCards.css
+
+by Alex Schemagin
+www.alexschemagin.com
+
+Add to your recipe website to print beautiful, 4" x 6" recipe cards. Forget bloated, extraneous, non-printer friendly versions of recipes. Since these media queries target printers and define strict dimensions, be mindful of the length of ingredient lists and cooking instructions. For sizing, use print-friendly metrics like "cm", "in", and "pt", etc. This CSS should appear always at the very end of your other CSS code. This is meant purely for printing. It is not recommended to use "!important", like, ever, but this will override whatever cooking recipe styles you may have for only demonstrative purposes. The styling as designed here can be previewed at www.pamrecipe.com. Change it up to make your perfect, printable recipe and add to your site. Bon apetit!
+
+Alex
+
+*/
+
+
+
+@media print {
+  /* required */
+	@page {
+		padding: 0 !important;
+		size: A4;
+		size: portrait;
+		margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background: #FFF !important;
+	}
+  html {
+    position: relative;
+  }
+  html, body {
+    background: #FFF !important;
+    -webkit-print-color-adjust: exact !important;
+    -webkit-filter: opacity(1) !important;
+  }
+
+  /* change to desired class and id names */
+  .recipe {
+    padding: 0 !important;
+		border: 1px dashed #666 !important;
+		position: absolute;
+		height: 4in !important;
+		width: 6in !important;
+    top: 0;
+  }
+    .recipe::before {
+      position: absolute;
+      bottom: 0.2cm;
+      left: 0.4cm;
+      content: "Your website name";
+      font-size: 7.5pt;
+    }
+    .recipe::after {
+  		position: absolute;
+      bottom: 0.2cm;
+      right: 0.4cm;
+      content: "Your website URL";
+      font-size: 8pt;
+  	}
+
+  h3.recipeTitle {
+    font-size: 13pt;
+    text-align: left;
+    text-transform: capitalize !important;
+    line-height: inherit !important;
+    top: 0cm !important;
+    padding: 0 !important;
+  }
+
+  ul.ingredients {
+		padding: 0 !important;
+    margin: 0 !important;
+    font-size: 8pt !important;
+    position: relative !important;
+    top: 0 !important;
+  }
+    ul.ingredients li {
+      list-style: none;
+      padding: 0 !important;
+      margin: 0 !important;
+      line-height: 9pt !important;
+      display: inline-block;
+      width: 32.63% !important;
+      float: none;
+    }
+
+  p.instructions {
+    margin: 0 0 5pt !important;
+    font-size: 8pt !important;
+    width: 90% !important;
+    line-height: 9pt;
+    position: relative !important;
+    top: 1cm !important;
+  }
+
+  /* hide the header and footer of your website. your recipe is meant to be cut out! */
+  header, header::before, header::after, footer {
+    display: none;
+  }
+}
